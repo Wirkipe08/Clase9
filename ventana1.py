@@ -247,7 +247,6 @@ class Ventana1(QMainWindow):
 
         self.ventanaDialogo.setLayout(self.vertical)
 
-        self.datosCorrectos = True
 
     def accion_botonLimpiar(self):
         self.nombreCompleto.clear()
@@ -264,6 +263,8 @@ class Ventana1(QMainWindow):
         self.respuesta3.clear()
 
     def accion_botonRegistrar(self):
+
+        self.datosCorrectos = True
 
         if self.password.text() != self.password2.text():
             self.datosCorrectos = False
@@ -311,6 +312,8 @@ class Ventana1(QMainWindow):
         
     #Metodo para hacer el boton buscar
     def accion_botonBuscar(self):
+
+        self.datosCorrectos = True
         
         self.ventanaDialogo.setWindowTitle("Buscar preguntas de validacion")
 
