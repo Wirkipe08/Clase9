@@ -4,7 +4,7 @@ from PyQt5.QtGui import QPixmap, QFont, QIcon
 from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QHBoxLayout, QApplication, QPushButton, QLineEdit, \
     QFormLayout, QDialog, QVBoxLayout
 from cliente import Cliente
-
+from ventana2 import Ventana2
 class Ventana1(QMainWindow):
     def __init__(self, parent=None):
         super(Ventana1, self).__init__(parent)
@@ -224,6 +224,20 @@ class Ventana1(QMainWindow):
         self.botonRecuperar.clicked.connect(self.accion_botonRecuperar)
         # Agregamos los botones del Layout ladoDerecho
         self.ladoDerecho.addRow(self.botonRecuperar, self.botonBuscar)
+
+        # Hacemos el boton para continuar
+        self.botonContinuar = QPushButton("Continuar")
+        # Establecemos el ancho del boton
+        self.botonContinuar.setFixedWidth(90)
+        # Le ponemos los estilos
+        self.botonContinuar.setStyleSheet("background-color: #008845;"
+                                          "color: #FFFFFF;"
+                                          "padding: 10px;"
+                                          "margin-top: 10px;")
+
+        self.botonContinuar.clicked.connect(self.accion_botonContinuar)
+
+        self.ladoDerecho.addRow(self.botonContinuar)
 
         self.horizontal.addLayout(self.ladoDerecho)
 
@@ -479,6 +493,11 @@ class Ventana1(QMainWindow):
                 # escribimos el texto de error
                 self.mensaje.setText("Las respuestas son incorrectas")
                 self.ventanaDialogo.exec_()
+
+    def accion_botonContinuar(self):
+        self.hide()
+        self.ventana2 = Ventana2()
+        self.ventana2.show()
 
 
 if __name__ == '__main__':
